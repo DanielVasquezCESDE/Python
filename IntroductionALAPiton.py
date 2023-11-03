@@ -296,7 +296,7 @@ common_issues[2] = "Steps tracking units discrepancy"
 
 #------------------------------------------------------------------------------------------------------------------------
 
-#2023-20-26
+#2023-10-26
 
 #Remover elementos de las listas
 
@@ -304,7 +304,7 @@ common_issues[2] = "Steps tracking units discrepancy"
 1. lista.pop() => Elimina elemento por índice
 2. lista.remove() => Elimina elemento por llave
 3. clear() => Elimina 
-"""
+
 
 numbers = [1,32,543,-234,2,45,66789,-4231,12,-32,0,8,23,45]
 oddnegative = []
@@ -313,5 +313,126 @@ for n in numbers:
     if n % 2 != 0 or n < 0:
         oddnegative.append(n)
         
-print(oddnegative)
+print(oddnegative)"""
     
+#------------------------------------------------------------------------------------------------------------------------
+
+#2023-11-02
+
+#Tuplas
+
+"""
+Inmutable = false
+
+Representación
+    tuplas = ()
+
+De un elemento:
+    tupla = elemento,   //La coma defina que es una tupla y no una variable sola.
+
+De varios elementos:
+    tupla = elemento1, elemento2, elemento3,
+De varios elementos con paréntesis:
+    tupla = (elemento1, elemento2, elemento3)
+
+Not compatible methods:
+    1. pop()
+    2. insert()
+    3. remove()
+    4. sort()
+    5. append()
+
+"""
+
+"""devices = "Charge 5", "Versa 3", "Sense", "Ionic"
+print(type(devices))
+
+#Access to an element
+issues = "Battery not charging", "Display corrupted", "Sleep tracking", "Refund for recall"
+print(issues[3])"""
+
+#Contar cuántas veces se repite un dato específico
+
+"""horas_clave = "5:58", "7:48", "10:50", "13:40", "14:00", "14:00"
+
+print(f"Las 14:00 horas programadas, se repiten {horas_clave.count('14:00')} veces")"""
+
+#Concatenar tuplas:
+"""horas_clave = "5:58", "7:48", "10:50", "13:40", "14:00", "14:00"
+issues = "Battery not charging", "Display corrupted", "Sleep tracking", "Refund for recall"
+devices = "Charge 5", "Versa 3", "Sense", "Ionic" 
+
+merged_tuple = issues + devices
+print(merged_tuple)"""
+
+#Concatenar convirtiendo y ordenando listas 
+"""horas_clave = "5:58", "7:48", "10:50", "13:40", "14:00", "14:00"
+issues = "Battery not charging", "Display corrupted", "Sleep tracking", "Refund for recall"
+devices = "Charge 5", "Versa 3", "Sense", "Ionic"
+
+list_comb = list(horas_clave) + list(issues)
+
+list_comb.sort()
+
+for i in list_comb:
+    print(list_comb)
+    break"""
+
+#-----------------------------------------------------------------------------------------------------------
+
+#Diccionarios
+
+"""
+Dic = {  }
+
+- Crecen y decrecen
+- Se trabaja en función de la clave
+
+Dic = { clave: valor }
+
+"""
+devices = {
+    "Modelo": "Charge 5",
+    "SN": "SND6789SDIJ",
+    "Warranty status": "ACTIVE",
+    "Pairing date": "2023-11-02"
+}
+
+dutch = dict(Modelo="Inspire 3", 
+             SN="SND67864DIJ", 
+             Warranty_status="EXPIRED", 
+             Pairing_date="2023-09-02")
+
+#Access to an element
+
+"""print(devices[SN])"""
+
+#Access to element by using .get()
+
+"""print(devices.get("Warranty status"))"""
+
+#Modificar un valor de la clave:
+
+"""devices[SN] = "NFI78987FD8"""
+
+#Modificar un elemento (clave) que no existe:
+
+"""devices["Pairing date"] = "2022-09-09"""
+
+#Acceder a las claves sin usar el método .key()
+
+"""for clave in devices:
+    print(clave)"""
+
+#Acceder a los valores del diciconario sin el método .values()
+
+"""for valor in devices:
+    print(devices[valor])"""
+
+#Obtener clave y valor con el método .items()
+
+"""for clave, valor in devices.items():
+    print(f"{clave} = {valor}")"""
+
+#pop() ---> delete an specific item, the argument is the key, popitem() ---> deletes the last item in a dictionary, clear() --> Erases all items within the dict
+
