@@ -365,7 +365,7 @@ devices = "Charge 5", "Versa 3", "Sense", "Ionic"
 merged_tuple = issues + devices
 print(merged_tuple)"""
 
-#Concatenar convirtiendo y ordenando listas 
+#Concatenar convirtiendo y ordenando tuplas 
 """horas_clave = "5:58", "7:48", "10:50", "13:40", "14:00", "14:00"
 issues = "Battery not charging", "Display corrupted", "Sleep tracking", "Refund for recall"
 devices = "Charge 5", "Versa 3", "Sense", "Ionic"
@@ -434,5 +434,5 @@ dutch = dict(Modelo="Inspire 3",
 """for clave, valor in devices.items():
     print(f"{clave} = {valor}")"""
 
-#pop() ---> delete an specific item, the argument is the key, popitem() ---> deletes the last item in a dictionary, clear() --> Erases all items within the dict
+#pop() ---> dedelete an specific item, the argument is the key, popitem() ---> deletes the last item in a dictionary, clear() --> Erases all items within the dict
 
