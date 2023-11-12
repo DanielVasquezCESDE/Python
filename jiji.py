@@ -20,39 +20,66 @@ Transporte Cesde.
 
 dias_Semana = ("Lunes", "Martes", "Miércoles", "Jueves", "viernes", "Sábado", "Domingo")
 
+print("-------------------------- TRANSPORTES CESDE -------------------------- \n\n")
 cantidad_conductores = int(input("Ingrese la cantidad de conductores de los que se registra el recaudo bruto:\n"))
 
 nombre_conductor = []
-recaudo_dia_total = []
-total_conductor_semana = []
-Total_semana = 0
+#LISTA BIDIMENSIONAL, que almacena los recaudos, primero por día y luego por codnuctor.
+recaudo_semanal = []
+
+#Lista que acumula los recaudos totales a la semana por conductor
+semana_conductor = []
+
+porcentaje_recaudo = []
 
 for nombre in range(cantidad_conductores):
     nombre_conductor.append(input(f"Ingrese el nombre del conductor Nro. {nombre+1}\n"))
 
-
 for dia in range(len(dias_Semana)):
+    #Se inicia la lista que tiene guardados los acumulados por conductor, esto, cada vez que se cambia de día
     recaudo_dia_conductor = []
     print(f"Ingrese el recaudo registrado para el {dias_Semana[dia]}:\n")
 
     for driver in range(cantidad_conductores):
         print(f"                   Conductor(a): {nombre_conductor[driver]}         ")
         recaudo_dia_conductor.append(float(input(f"Ingrese el dinero total recaudado para el {dias_Semana[dia]}, por {nombre_conductor[driver]} en pesos:\n$")))
-        total_conductor_semana[driver] += recaudo_dia_conductor[driver]
         print("-------------------------------------------------------------")
-    recaudo_dia_total.append(recaudo_dia_conductor)
-    Total_semana += sum(recaudo_dia_total[dia])
+    #Se agrega la lista de acumulados por conductor por día a la lista general de la semana.
+    recaudo_semanal.append(recaudo_dia_conductor)
     print("################################################################################")
-    
-          
+
+#Variable acumuladora de los recaudos totales (general)
+total_semana = 0
+
+for c in range(cantidad_conductores):
+    #Se reinicia la variable acumuladora del recaudo semanal total por conductor, esto, cuando se pasa al siguiente.
+    acumula = 0
+    for d in range(len(dias_Semana)):
+        acumula += recaudo_semanal[d][c]
+    #Se agregan los totales semanales por conductor a la lista semana_conductor
+    semana_conductor.append(acumula)
+    #Se suman todos los totales semanales de los conductores para el total general.
+    total_semana += semana_conductor[c]
+
+
+for c in range(cantidad_conductores):
+    #Se calcula el porcentaje de recaudo semanal general por cada conductor
+    porcentaje_recaudo.append((semana_conductor[c]*100)/total_semana)
+
+#--------------------------------- Se muestran los resultados ---------------------------------
+
 for day in range(len(dias_Semana)):
     print(f"------------------- {dias_Semana[day]} -------------------\n")
     for conductor in range(cantidad_conductores):
         print(f"                     Conductor(a): {nombre_conductor[conductor]}             \n")
-        print(f"Recaudo del {dias_Semana[day]}: ${recaudo_dia_total[day][conductor]} pesos.\n")
-    print(f" ******************* Recaudo total del día: ${sum(recaudo_dia_total[day])}pesos *******************\n")
+        print(f"Recaudo del {dias_Semana[day]}: ${recaudo_semanal[day][conductor]} pesos.\n")
+    print(f" ******************* Recaudo total del día: ${sum(recaudo_semanal[day])}pesos *******************\n")
 
-print(f"############################## TOTAL RECAUDADO A LA SEMANA: ${Total_semana} pesos ##############################")
+print("------------------------------------ TOTAL DE RECAUDOS A LA SEMANA ------------------------------------\n")
+
+for c in range(cantidad_conductores):
+    print(f"El total recaudado por {nombre_conductor[c]} esta semana, fue de: ${semana_conductor[c]} pesos\n Porcentaje equivalente: {porcentaje_recaudo[c]}%\n\n")
+print(f"############################## TOTAL GENERAL: ${sum(semana_conductor)} pesos ##############################")
 
 
 
