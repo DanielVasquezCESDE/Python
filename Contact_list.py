@@ -15,9 +15,9 @@
 """
 #Startswith
 
-palabra = "Leave schedule: Close program"
+"""palabra = "Leave schedule: Close program"
 verifica = palabra.startswith("Le")
-print(verifica)
+print(verifica)"""
 
 #Diccionarios
 
@@ -119,7 +119,7 @@ if accion == 1:
         
 
     """print("¿Qué desea hacer con este contacto?:\n")
-    accion_contacto = int(input("Marque el número según sea la acción:\n (1) Para modificar contacto\n (2) Para eliminar contacto\n\n --- SALIR DE AGENDA: (4) ---\n\n"))"""
+    accion_contacto = int(input("Marque el número según sea la acción:\n (1) Para modificar contacto\n (2) Para eliminar contacto\n\n --- SALIR DE AGENDA: (4) ---\n\n"))
 
 elif accion == 2: 
     print("+ Añadiendo nuevo contacto... 👭👬 +\n")
@@ -142,6 +142,6 @@ elif accion == 3:
     #Falta
 
 
-"""def nombre_funcion(argumentos):
+def nombre_funcion(argumentos):
     código
     return retorno"""
