@@ -11,74 +11,22 @@
                 3. Delete contact:  Confirm message!!
                 4. Show all: Dislays all contact list.
                 5. Leave schedule: Close program.
-                6. Invalid option, select a valid one.
-"""
-#Startswith
+                6. Invalid option, select a valid one."""
 
-"""palabra = "Leave schedule: Close program"
-verifica = palabra.startswith("Le")
-print(verifica)"""
-
-#Diccionarios
-
-"""
-Dic = {  }
-
-- Crecen y decrecen
-- Se trabaja en función de la clave
-
-Dic = { clave: valor }
-
-"""
-"""devices = {
-    "Modelo": "Charge 5",
-    "SN": "SND6789SDIJ",
-    "Warranty status": "ACTIVE",
-    "Pairing date": "2023-11-02"
-}
-
-dutch = dict(Modelo="Inspire 3", 
-             SN="SND67864DIJ", 
-             Warranty_status="EXPIRED", 
-             Pairing_date="2023-09-02")"""
-
-#Access to an element
-
-"""print(devices[SN])"""
-
-#Access to element by using .get()
-
-"""print(devices.get("Warranty status"))"""
-
-#Modificar un valor de la clave:
-
-"""devices[SN] = "NFI78987FD8"""
-
-#Modificar un elemento (clave) que no existe:
-
-"""devices["Pairing date"] = "2022-09-09"""
-
-#Acceder a las claves sin usar el método .key()
-
-"""for clave in devices:
-    print(clave)"""
-
-#Acceder a los valores del diciconario sin el método .values()
-
-"""for valor in devices:
-    print(devices[valor])"""
-
-#Obtener clave y valor con el método .items()
-
-"""for clave, valor in devices.items():
-    print(f"{clave} = {valor}")"""
-
-#pop() ---> dedelete an specific item, the argument is the key, popitem() ---> deletes the last item in a dictionary, clear() --> Erases all items within the dict
 
 #---------------------------------------------------------------------------------------
+def Mostrar_Contactos():
+     print(f"------------------🤳 Mis contactos 🤳 ------------------\n\n")
+     print(f"  |   Nombre   |   Teléfono celular  |  \n")
+
+     for n, t in zip(range(len(contactos["Nombre"])), range(len(contactos["Teléfono"]))):
+        print(f"  |   {contactos['Nombre'][n]}   |   {contactos['Teléfono'][t]}  |  \n\n")
+
+#---------------------------------------------------------------------------------------
+
 def Buscar_Contacto():
 
-        busqueda = input("Comience a escribir el nombre y presione enter...")
+        busqueda = input(f"Comience a escribir el nombre y presione enter...\n")
 
         print(f"\nCoincidencias:")
 
@@ -98,6 +46,15 @@ def Buscar_Contacto():
                 print(f'     ({a+1})  |   {coincidencias["Name"][a]}   |   {coincidencias["Number"][a]}  |  \n') 
         else:
             print("No se encontraron coincidencias.")
+            desea_add = input(f"¿Desea agregar el contacto?\n(s) Si\n(n) No\n")
+            if desea_add == "s":
+                Agregar_Contacto()
+            else:
+                busqueda = input(f"Intente de nuevo. Ingrese la inicial:\n")
+
+
+
+                
         """else: 
             print("Contacto no encontrado, vuelva a intentar o presione (2) para agregar\n")
             busqueda = input("Comience a escribir el nombre y presione enter...\n")"""
@@ -150,24 +107,26 @@ def Eliminar_contacto(Index):
 
 def Agregar_Contacto():
 
-        print("+ Añadiendo nuevo contacto... 👭👬 +\n")
-        agregar_nombre = input("Ingrese el nombre del contacto: ")
-        agregar_numero = input(f"Ingrese el numero de contacto de {agregar_nombre}: ")
+        print(f"Verifiquemos primero que no esté creado\n\n")
+        contacto_agregado = Buscar_Contacto()
 
-        contactos["Nombre"].append(agregar_nombre)
-        contactos["Teléfono"].append(agregar_numero)
-        
-        print("\n Sistema: Contacto agregado exitosamente 👍\n")
+        if contacto_agregado:
+             print("¡Este contacto ya existe!")
+        else:
+            print("+ Añadiendo nuevo contacto... 👭👬 +\n")
+            agregar_nombre = input("Ingrese el nombre del contacto: ")
+            agregar_numero = input(f"Ingrese el numero de contacto de {agregar_nombre}: ")
+
+            contactos["Nombre"].append(agregar_nombre)
+            contactos["Teléfono"].append(agregar_numero)
+            
+            print("\n Sistema: Contacto agregado exitosamente 👍\n")
 
 
-        print(f"------------------🤳 Nuevos contactos 🤳 ------------------\n\n")
-        print(f"  |   {contactos['Nombre'][-1]}   |   {contactos['Teléfono'][-1]}  |  \n\n")
+            print(f"------------------🤳 Nuevos contactos 🤳 ------------------\n\n")
+            print(f"  |   {contactos['Nombre'][-1]}   |   {contactos['Teléfono'][-1]}  |  \n\n")
 
-        print(f"------------------🤳 Mis contactos 🤳 ------------------\n\n")
-        print(f"  |   Nombre   |   Teléfono celular  |  \n")
-
-        for n, t in zip(range(len(contactos["Nombre"])), range(len(contactos["Teléfono"]))):
-            print(f"  |   {contactos['Nombre'][n]}   |   {contactos['Teléfono'][t]}  |  \n\n")
+            
 
  ######################################## AGENDA ############################################
 contactos = {
@@ -218,6 +177,12 @@ while continuar == "s":
     elif accion == 3:
         Contacto_Eliminar =  Buscar_Contacto()
         Eliminar_contacto(Contacto_Eliminar)
+
+    else:
+         while accion != 1 and accion != 2 and accion != 3:
+            print("Opción inválida, intentá de nuevo")
+            accion = int(input(f"Marque el número correcto según sea la acción:\n (1) Para buscar contacto\n (2) Para añadir contacto\n (3) Para eliminar contacto\n\n ---\n\n"))
+
 
     continuar = input(f"¿Desea continuar en la agenda?\n Marque 's', de lo contrario presione Enter")
     
